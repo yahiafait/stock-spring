@@ -1,0 +1,14 @@
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\controller\CategorieController.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\controller\FournisseurController.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\controller\ProduitController.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\entities\Categorie.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\entities\Fournisseur.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\entities\Produit.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\Repositories\CategorieRepository.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\Repositories\FournisseurRepository.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\Repositories\ProduitRepository.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\services\CategorieService.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\services\FournisseurService.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\services\ProduitService.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\ServletInitializer.java
+C:\Users\user\Downloads\stock\src\main\java\com\stock\stock\StockApplication.java
