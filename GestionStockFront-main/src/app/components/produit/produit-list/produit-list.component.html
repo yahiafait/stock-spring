@@ -1,0 +1,63 @@
+<div class="card-body">
+    <button mat-mini-fab color="primary" (click)="add()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <div class="table-responsive shadow-lg p-3 mb-5 bg-body rounded">
+        <table class="table table-hover table-bordered align-middle">
+          <thead>
+            <tr class="table-dark  align-bottom" >
+              <th scope="col">Produit</th>
+              <th scope="col">Categorie</th>
+              <th scope="col">Quantite Stock</th>
+              <th scope="col">Quantite Alerte</th>
+              <th scope="col">Status</th>
+              <th scope="col">Date Creation</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of stockes">
+              <td><a>{{ stock.nom_produit }}</a></td>
+              <td>{{ stock.categorie.nom_categorie }}</td>
+              <td style="font-size: large;"><mark>{{ stock.quantite_stock }}</mark></td>
+              <td style="font-size: large;"><mark>{{ stock.alerte_quantite }}</mark></td>
+              <td><p *ngIf="greater_than(stock.alerte_quantite,stock.quantite_stock)"><i>⚠️</i></p></td>
+              <td>{{ this.datepipe.transform(stock.date_ajoute, 'dd/MM/yyyy HH:mm') }}</td>
+              <td>
+                <button (click)="edit(stock)" class="btn btn-success m-2">📝</button>
+                <button (click)="delete(stock.id)" class="btn btn-danger m-2">❌</button>
+                <button *ngIf="stock.quantite_stock == 0" class="btn btn-warning disabled m-2" (click)="sortie(stock)">💳</button>
+                <button *ngIf="stock.quantite_stock != 0" class="btn btn-warning m-2" (click)="sortie(stock)">💳</button>
+                <button class="btn btn-primary" (click)="entrer(stock)">👜</button>
+              </td>
+            </tr>
+            <tr *ngIf="!count || count == 0">
+                <td colspan="7" ><p style="text-align: center;color: red;">LE STOCK EST VIDE</p></td>
+              </tr>
+          </tbody>
+          <tfoot *ngIf="count || count != 0">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><button [disabled]="!previous" class="btn page-link" (click)="fetchPrevious()">Previous</button></li>
+                  <li class="page-item"><button [disabled]="!next" class="btn page-link" (click)="fetchNext()">Next</button></li>
+                </ul>
+              </nav>
+          </tfoot>
+        </table>
+      </div>
+</div>
+
+<!-- Modal ajoute-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{ModalTitle}}</h5>
+        <button type="button" class="btn-close" (click)="closeClick()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <app-stock-add [(stock))]="stock" *ngIf="ActivateStockAddComp"></app-stock-add>
+      </div>
+    </div>
+  </div>
+</div>

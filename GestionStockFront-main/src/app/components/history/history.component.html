@@ -1,0 +1,41 @@
+<section>
+    <h1> Liste Historique 📜</h1>
+        <div class="card-body">
+            <div class="table-responsive shadow-lg p-3 mb-5 bg-body rounded">
+                <table class="table table-hover table-bordered align-middle">
+                    <thead>
+                      <tr class="table-dark  align-bottom" >
+                        <th scope="col">Produit</th>
+                        <th scope="col">Quantite Stock</th>
+                        <th scope="col">Quantite Sortie</th>
+                        <th scope="col">Sortie Par</th>
+                         <th scope="col">Quantite Entrer</th>
+                        <th scope="col">Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let historique of historiques">
+                        <td>{{ historique.produit.nom_produit }}</td>
+                        <td>{{ historique.quantite_stock }}</td>
+                        <td>{{ historique.quantite_sortie }}</td>
+                        <td>{{ historique.sortie_par }}</td>
+                        <td>{{ historique.quantite_entrer }}</td>
+                        <td>{{ this.datepipe.transform(historique.date_ajoute, 'dd/MM/yyyy HH:mm') }}</td>
+                      </tr>
+                      <tr *ngIf="!count || count == 0">
+                        <td colspan="7" ><p style="text-align: center;color: red;"> Il n'a aucuin historique</p> </td>
+                      </tr>
+                    </tbody>
+                    <tfoot *ngIf="count || count != 0">
+                        <nav aria-label="Page navigation example">
+                          <ul class="pagination">
+                            <li class="page-item"><button class="btn page-link" [disabled]="!previous" (click)="fetchPrevious()">Previous</button></li>
+                            <li class="page-item"><button class="btn page-link" [disabled]="!next" (click)="fetchNext()">Next</button></li>
+                          </ul>
+                        </nav>
+                    </tfoot>
+                  </table>
+            
+            </div>
+        </div>
+</section>

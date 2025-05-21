@@ -1,0 +1,22 @@
+<mat-card-title>{{title}}</mat-card-title>
+          <div *ngIf="message" class="alert alert-danger" role="alert">
+            {{message}}
+          </div>
+          <mat-card-subtitle>
+              <mat-form-field appearance="fill"  class="d-inline p-2">
+                <mat-label>Quantité sortie</mat-label>
+                <input matInput type="number" [(ngModel)]="produit.quantite_sortie">
+              </mat-form-field>
+              <mat-form-field appearance="fill"  class="d-inline p-2">
+                <mat-label>Sortie par</mat-label>
+                <input matInput type="text" [(ngModel)]="produit.sortie_par">
+              </mat-form-field>
+          </mat-card-subtitle>
+          <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="onClosse()">
+              <mat-icon>❌</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" (click)="updateProduit()">
+              <mat-icon>save</mat-icon>
+            </button>
+          </mat-card-actions>

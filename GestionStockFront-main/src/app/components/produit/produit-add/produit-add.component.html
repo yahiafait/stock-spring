@@ -1,0 +1,40 @@
+<mat-card-title>{{title}}</mat-card-title>
+           
+          <div *ngIf="message" class="alert alert-danger" role="alert">
+            {{message}}
+          </div>
+          <mat-card-subtitle>
+              <mat-form-field appearance="fill"  class="d-inline p-2">
+                <mat-label>Nom</mat-label>
+                <input matInput type="text" [(ngModel)]="produit.nom_produit">
+              </mat-form-field>
+              <mat-form-field *ngIf="!produit.id" appearance="fill"  class="d-inline p-2">
+                <mat-label>Categorie</mat-label>
+                <mat-select [(ngModel)]="produit.categorie">
+                   <mat-option *ngFor='let category of categories' value="{{category.id}}" >{{ category.nom_categorie }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <select *ngIf="produit.id" [(ngModel)]="produit.categorie.id">
+                <option *ngFor='let category of categories' value="{{category.id}}">{{ category.nom_categorie }}</option>
+              </select>
+
+              <mat-form-field *ngIf="!produit.id" appearance="fill"  class="d-inline p-2">
+                <mat-label>Quantite stock</mat-label>
+                <input matInput type="text" [(ngModel)]="produit.quantite_stock">
+              </mat-form-field>
+              <mat-form-field appearance="fill"  class="d-inline p-2">
+                <mat-label>Quantite alerte</mat-label>
+                <input matInput type="text" [(ngModel)]="produit.alerte_quantite">
+              </mat-form-field>
+          </mat-card-subtitle>
+          <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="onClosse()">
+              <mat-icon>❌</mat-icon>
+            </button>
+            <button *ngIf="!produit.id" mat-raised-button color="primary" (click)="saveProduit()">
+              <mat-icon>save</mat-icon>
+            </button>
+            <button *ngIf="produit.id" mat-raised-button color="primary" (click)="updateProduit()">
+              <mat-icon>save</mat-icon>
+            </button>
+          </mat-card-actions>
