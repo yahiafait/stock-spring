@@ -20,11 +20,15 @@ public class Categorie {
     @OneToMany(mappedBy = "categorie")
     private List<Produit> produits;
 
-    // Getters, setters, constructeurs
+
 
 
     public Categorie(List<Produit> produits) {
         this.produits = produits;
+    }
+
+    public Categorie() {
+
     }
 
     public Long getId() {

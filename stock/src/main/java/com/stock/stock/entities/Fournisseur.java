@@ -18,6 +18,10 @@ public class Fournisseur {
     private String email;
     private String telephone;
 
+    public Fournisseur() {
+
+    }
+
     public String getEmail() {
         return email;
     }
